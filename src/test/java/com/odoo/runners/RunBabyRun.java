@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/",
         glue = "com\\odoo\\step_definitions",
         dryRun = false,
-        tags = "@smokeTest"
+        tags = "@BRIT-4191"
 
 )
 public class RunBabyRun {

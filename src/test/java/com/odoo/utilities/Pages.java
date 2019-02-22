@@ -16,6 +16,8 @@ public class Pages {
     private TodaysOrdersPage todaysOrdersPage;
     private YourLunchAccountPage yourLunchAccountPage;
     private Constants constants;
+    private ControlAccountsKanbanViewPage controlAccountsKanbanViewPage;
+    private ControlAccountsCreatePage controlAccountsCreatePage;
 
 //    private CreateAlertPage createAlertPage;
 //    private AlertDetailPage alertDetailPage;
@@ -128,5 +130,18 @@ public class Pages {
         return lunchPage;
     }
 
+    public ControlAccountsKanbanViewPage controlAccountsKanbanViewPage() {
+        if (controlAccountsKanbanViewPage == null) {
+            controlAccountsKanbanViewPage = new ControlAccountsKanbanViewPage();
+        }
+        return controlAccountsKanbanViewPage;
+    }
+
+    public ControlAccountsCreatePage controlAccountsCreatePage() {
+        if (controlAccountsCreatePage == null) {
+            controlAccountsCreatePage = new ControlAccountsCreatePage();
+        }
+        return controlAccountsCreatePage;
+    }
 
 }

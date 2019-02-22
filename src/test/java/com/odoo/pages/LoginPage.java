@@ -1,5 +1,6 @@
 package com.odoo.pages;
 
+import com.odoo.utilities.BrowserUtils;
 import com.odoo.utilities.ConfigurationReader;
 import com.odoo.utilities.Driver;
 import com.odoo.utilities.Pages;
@@ -40,7 +41,6 @@ public class LoginPage {
         email.sendKeys(ConfigurationReader.getProperty("username"));
         password.sendKeys(ConfigurationReader.getProperty("password"));
         loginBttn.click();
-
     }
 
     public void goLunch() {

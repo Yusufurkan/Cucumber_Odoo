@@ -1,6 +1,7 @@
 package com.odoo.step_definitions;
 
 import com.odoo.pages.LoginPage;
+import com.odoo.utilities.BrowserUtils;
 import com.odoo.utilities.ConfigurationReader;
 import com.odoo.utilities.Driver;
 import cucumber.api.Scenario;
@@ -38,6 +39,7 @@ public class Hooks {
         }
 
         System.out.println("Closing driver");
+        BrowserUtils.wait(3);
         Driver.closeDriver();
     }
 
