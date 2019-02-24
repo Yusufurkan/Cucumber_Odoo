@@ -1,5 +1,6 @@
 package com.odoo.pages;
 
+import com.odoo.utilities.BrowserUtils;
 import com.odoo.utilities.Driver;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -29,12 +30,13 @@ public class LunchPage {
             for (int i = 0; i < functions.size(); i++) {
                 if (functions.get(i).getText().equalsIgnoreCase(functionality)) {
                     functions.get(i).click();
+                    BrowserUtils.waitUntilTheUrlChanged();
                     return;
                 }
             }
-            throw new Exception();
+            throw new NoSuchElementException("\\nFunctionality does not exist.. Check spelling! ");
         } catch (Exception e) {
-            System.err.println("\nFunctionality does not exist.. Check spelling! ");
+
         }
     }
 

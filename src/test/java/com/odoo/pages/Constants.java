@@ -1,6 +1,7 @@
 package com.odoo.pages;
 
 import com.odoo.utilities.Driver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -27,6 +28,9 @@ public class Constants {
     @FindBy(className = "oe_topbar_name")
     public WebElement user;
 
+    @FindBy(className = "oe_topbar_name")
+    public List<WebElement> searchBoxFilter;           // this element represents the tags that appear inside the search
+
 
     public void getToFilter(String functionality) {
         try {
@@ -36,9 +40,8 @@ public class Constants {
                     return;
                 }
             }
-            throw new Exception("Functionality does not exist.. Check spelling! ");
-        } catch (Exception e) {
-            System.err.println("Incorrect entry");
+            throw new NoSuchElementException("Functionality does not exist.. Check spelling!");
+        } catch (NoSuchElementException e) {
         }
     }
 

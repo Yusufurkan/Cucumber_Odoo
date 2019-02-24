@@ -1,12 +1,10 @@
 package com.odoo.step_definitions;
 
-import com.odoo.pages.LoginPage;
 import com.odoo.utilities.ConfigurationReader;
 import com.odoo.utilities.Driver;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.junit.Ignore;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -38,7 +36,7 @@ public class Hooks {
         }
 
         System.out.println("Closing driver");
-        Driver.closeDriver();
+       // Driver.closeDriver();
     }
 
 

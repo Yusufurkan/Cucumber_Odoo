@@ -1,6 +1,8 @@
 package com.odoo.utilities;
 
 import com.odoo.pages.*;
+import com.odoo.step_definitions.configuration.AlertDetailPage;
+import com.odoo.step_definitions.configuration.CreateAlertPage;
 
 public class Pages {
     private LoginPage loginPage;
@@ -17,30 +19,28 @@ public class Pages {
     private YourLunchAccountPage yourLunchAccountPage;
     private Constants constants;
 
-//    private CreateAlertPage createAlertPage;
-//    private AlertDetailPage alertDetailPage;
-//
-//    public AlertDetailPage alertDetailPage() {
-//        if (alertDetailPage == null) {
-//            alertDetailPage = new AlertDetailPage();
-//        return alertDetailPage;
-//        }
-//    }
-//
-//
-//
-//    public CreateAlertPage createAlertPage() {
-//        if (createAlertPage == null) {
-//            createAlertPage = new CreateAlertPage();
-//        }
-//        return createAlertPage;
-//    }
+    private CreateAlertPage createAlertPage;
+    private AlertDetailPage alertDetailPage;
+
+    public AlertDetailPage alertDetailPage() {
+        if (alertDetailPage == null) {
+            alertDetailPage = new AlertDetailPage();
+        }
+        return alertDetailPage;
+    }
 
     public Constants constants() {
         if (constants == null) {
             constants = new Constants();
         }
         return constants;
+    }
+
+    public CreateAlertPage createAlertPage() {
+        if (createAlertPage == null) {
+            createAlertPage = new CreateAlertPage();
+        }
+        return createAlertPage;
     }
 
     public YourLunchAccountPage yourLunchAccountPage() {
@@ -127,6 +127,8 @@ public class Pages {
         }
         return lunchPage;
     }
+
+
 
 
 }

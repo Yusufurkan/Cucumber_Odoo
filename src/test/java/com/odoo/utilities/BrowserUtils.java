@@ -74,6 +74,10 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+    public static Boolean waitForInvisibility(WebElement element, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
 
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
@@ -122,11 +126,12 @@ public class BrowserUtils {
     /**
      * Verifies whether the element matching the provided locator is displayed on page
      * fails if the element matching the provided locator is not found or not displayed
+     *
      * @param by
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            assertTrue("Element not visible: "+by, Driver.getDriver().findElement(by).isDisplayed());
+            assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Element not found: " + by);
 
@@ -136,11 +141,12 @@ public class BrowserUtils {
     /**
      * Verifies whether the element is displayed on page
      * fails if the element is not found or not displayed
+     *
      * @param element
      */
     public static void verifyElementDisplayed(WebElement element) {
         try {
-            assertTrue("Element not visible: "+element, element.isDisplayed());
+            assertTrue("Element not visible: " + element, element.isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Element not found: " + element);
 
@@ -150,12 +156,13 @@ public class BrowserUtils {
 
     /**
      * Waits for element to be not stale
+     *
      * @param element
      */
     public void waitForStaleElement(WebElement element) {
         int y = 0;
         while (y <= 15) {
-            if(y==1)
+            if (y == 1)
                 try {
                     element.isDisplayed();
                     break;
@@ -179,6 +186,7 @@ public class BrowserUtils {
 
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
+     *
      * @param select
      * @return
      */
@@ -192,6 +200,7 @@ public class BrowserUtils {
 
     /**
      * Clicks on an element using JavaScript
+     *
      * @param element
      */
     public void clickWithJS(WebElement element) {
@@ -202,6 +211,7 @@ public class BrowserUtils {
 
     /**
      * Scrolls down to an element using JavaScript
+     *
      * @param element
      */
     public void scrollToElement(WebElement element) {
@@ -210,6 +220,7 @@ public class BrowserUtils {
 
     /**
      * Performs double click action on an element
+     *
      * @param element
      */
     public void doubleClick(WebElement element) {
@@ -218,6 +229,7 @@ public class BrowserUtils {
 
     /**
      * Changes the HTML attribute of a Web Element to the given value using JavaScript
+     *
      * @param element
      * @param attributeName
      * @param attributeValue
@@ -227,19 +239,38 @@ public class BrowserUtils {
     }
 
     /**
-     *
      * @param element
      * @param check
      */
-    public void selectCheckBox(WebElement element, boolean check){
-        if(check){
-            if(!element.isSelected()){
+    public void selectCheckBox(WebElement element, boolean check) {
+        if (check) {
+            if (!element.isSelected()) {
                 element.click();
             }
         } else {
-            if(element.isSelected()){
+            if (element.isSelected()) {
                 element.click();
             }
+        }
+    }
+
+    public static void waitUntilTheUrlChanged() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 6);
+        String url = Driver.getDriver().getCurrentUrl();
+        wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
+    }
+
+
+    public static WebElement getElementInTheList(List<WebElement> list, String functionality) {
+        try {
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getText().equalsIgnoreCase(functionality)) {
+                    return list.get(i);
+                }
+            }
+            throw new NoSuchElementException("Functionality does not exist.. Check spelling!");
+        } catch (NoSuchElementException e) {
+            return null;
         }
     }
 

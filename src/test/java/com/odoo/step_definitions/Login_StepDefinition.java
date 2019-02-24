@@ -1,12 +1,7 @@
 package com.odoo.step_definitions;
 
-import com.odoo.pages.LoginPage;
-import com.odoo.utilities.ConfigurationReader;
-import com.odoo.utilities.Driver;
 import com.odoo.utilities.Pages;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import org.openqa.selenium.WebDriver;
 
 public class Login_StepDefinition {
     Pages pages =new Pages();
